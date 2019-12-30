@@ -42,7 +42,7 @@ def main(args):
 	
 	model = unrolled(args, loader_train, loader_test, dtype)
 
-	fname = "model/MNIST_CWM_retain.pth"
+	fname = "model/model.pth"
 	torch.save(model, fname)
 
 	print("Training done, model save to %s :)" % fname)
