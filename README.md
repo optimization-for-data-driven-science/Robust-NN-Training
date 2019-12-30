@@ -5,9 +5,7 @@ Implementation for the proposed formulation of robust neural network training, i
 ## Requirements
 - Python >= 3.5
 - PyTorch >= 1.3 (to use pretrained_model)
-
 or 
-
 - PyTorch >= 1.0 (to train from scratch)
 
 ## Getting Started
