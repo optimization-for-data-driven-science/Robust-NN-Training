@@ -61,12 +61,12 @@ def unrolled(args, loader_train, loader_test, dtype):
 	model = model.type(dtype)
 	model.train()
 		
-	SCHEDULE_EPOCHS = [40] 
+	SCHEDULE_EPOCHS = [50, 50] 
 	learning_rate = 5e-4
 	
 	for num_epochs in SCHEDULE_EPOCHS:
 		
-		print('\nTraining %d epochs with learning rate %.4f' % (num_epochs, learning_rate))
+		print('\nTraining %d epochs with learning rate %.7f' % (num_epochs, learning_rate))
 		
 		optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 		
@@ -172,7 +172,7 @@ def parse_arguments():
 						help='path to dataset')
 	parser.add_argument('--batch-size', default=64, type=int,
 						help='size of each batch of cifar-10 training images')
-	parser.add_argument('--print-every', default=50, type=int,
+	parser.add_argument('--print-every', default=200, type=int,
 						help='number of iterations to wait before printing')
 
 	return parser.parse_args()

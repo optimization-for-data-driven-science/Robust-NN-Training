@@ -34,7 +34,7 @@ def cw_train_unrolled(model, X, y, dtype):
 
 	index = torch.tensor([jj for jj in range(10)] * N).view(-1, 1).cuda().long()
 
-	MaxIter_max = 8
+	MaxIter_max = 11
 	step_size_max = 0.1
 
 	for i in range(MaxIter_max):
@@ -51,6 +51,8 @@ def cw_train_unrolled(model, X, y, dtype):
 
 	preds = model(X)
 
-	loss = (-F.log_softmax(preds)).gather(1, y).view(-1, 10).max(dim=1)[0].mean()
+	# loss = (-F.log_softmax(preds)).gather(1, y).view(-1, 10).max(dim=1)[0].mean()
+
+	loss = (-F.log_softmax(preds)).gather(1, y.view(-1, 1)).view(-1, 10).max(dim=1)[0].mean()
 
 	return loss
