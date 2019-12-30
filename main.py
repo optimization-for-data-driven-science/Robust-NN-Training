@@ -24,7 +24,7 @@ from model import ConvNet
 
 import numpy as np
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 from lossfns import *
 from adversary import *
@@ -32,7 +32,7 @@ from dataprocess import *
 
 import os
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 
 def main(args):
@@ -50,7 +50,6 @@ def main(args):
 	# fname = "model/CIFAR10_0.03.pth"
 	# model = torch.load(fname)
 
-	# feederTest(model, loader_test, dtype)
 	pgdAttackTest(model, loader_test, dtype)
 	fgsmAttackTest(model, loader_test, dtype)
 

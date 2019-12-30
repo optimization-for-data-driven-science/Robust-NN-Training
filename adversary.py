@@ -23,11 +23,8 @@ def pgdAttackTest(model, loader_test, dtype):
 	
 	model.eval()
 	epss = [0.0, 0.1, 0.2, 0.3, 0.4]
-	# epss = [0.03]
 	MaxIter = 40
-	# MaxIter = 20
 	step_size = 1e-2
-	# step_size = 0.0078
 	
 	for eps in epss:
 
@@ -52,10 +49,10 @@ def pgdAttackTest(model, loader_test, dtype):
 					X.data = X.data.clamp(min=0, max=1)
 					X.grad.zero_()
 
-				if (i % 100 == 0):
-					print("loss =", loss.item())
+				# if (i % 100 == 0):
+					# print("loss =", loss.item())
 
-			print("loss =", loss.item())
+			# print("loss =", loss.item())
 
 			X.requires_grad = False
 			X = (X * 255).long().float() / 255
@@ -66,7 +63,7 @@ def pgdAttackTest(model, loader_test, dtype):
 			num_correct += (preds == y).sum()
 			num_samples += preds.size(0)
 
-			print('-' * 20)
+			# print('-' * 20)
 
 
 		# R = X[0][0].data.cpu().numpy().reshape(32,32)
